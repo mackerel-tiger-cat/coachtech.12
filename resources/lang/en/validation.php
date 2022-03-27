@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -12,7 +11,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
+    /*
     'accepted' => 'The :attribute must be accepted.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
     'active_url' => 'The :attribute is not a valid URL.',
@@ -107,7 +106,9 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    */
+    'required' => '・The :attribute field is required.',
+    /*
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -129,7 +130,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
-
+    */
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -140,13 +141,13 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-
+    /*
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
-
+    */
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -157,7 +158,16 @@ return [
     | of "email". This simply helps us make our message more expressive.
     |
     */
-
-    'attributes' => [],
-
+    'attributes' => ['content' => 'content',],
+    'content' => [
+        'newTodo' => 'Todo',
+        /*現在時刻の記述の仕方がわからない
+        'new' => '',
+        */
+        'updateTodo' => 'Todo',
+        /*現在時刻の記述の仕方がわからない
+        'update' => '',
+        */
+    ],
+    /*疑問点…'created_at'と'updated_at'は指定しなくても大丈夫か*/
 ];

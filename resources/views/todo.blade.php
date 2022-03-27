@@ -35,7 +35,7 @@
   }
   a {
     margin: 0;
-    padding; 0;
+    padding: 0;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
@@ -189,7 +189,55 @@
 </head>
 <body>
   <div class="container">
-    <div class="card"></div>
+    <div class="card">
+
+      <div class="container__1">
+        <h1>Todo List</h1>
+      </div>
+      
+    <div class="container___1">
+        <div class="container___2">
+            {!! Form::open(['route' => 'todos.store', 'method' => 'POST']) !!}
+            {{ csrf_field() }}
+                <div class="row">
+                    {{ Form::text('newTodo', null, ['class' => 'form-control col-8 mr-5']) }}
+                    {{ Form::submit('追加', ['class' => 'btn btn-primary']) }}
+                </div>
+            {!! Form::close() !!}
+        </div>
+        <!-- エラー表示 ここから -->
+        @if ($errors->has('newTodo'))
+            <p class="alert alert-danger">{{ $errors->first('newTodo') }}</p>
+        @endif
+        <!-- エラー表示 ここまで -->>
+        <table class="table">
+          @csrf
+            <thead>
+                <tr>
+                    <th scope="col">作成日</th>
+                    <th scope="col" style="width: 60%">タスク名</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" class="todo">{{ $todo->todo }}</th>
+                    <!--作成日（現在時刻）を記述する事
+                    <td>{{{ $todo->**** }}</td>-->
+                    <td><a href="{{ route('index', $todo->id) }}" class="btn btn-primary">更新</a></td>
+                    {!! Form::open(['route' => ['todos.destroy', $todo->id], 'method' => 'POST']) !!}
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <td>{{ Form::submit('削除', ['class' => 'btn btn-danger']) }}</td>
+                    {!! Form::close() !!}
+                </tr>
+        @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    </div>
   </div>
 <!--
   <h1>{{$content}}</h1>
