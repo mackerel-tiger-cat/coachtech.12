@@ -224,7 +224,7 @@
                 <tr>
                     <th scope="row" class="todo">{{ $todo->todo }}</th>
                     <!--作成日（現在時刻）を記述する事
-                    <td>{{{ $todo->**** }}</td>-->
+                    <td>{{ $todo->**** }}</td>-->
                     <td><a href="{{ route('index', $todo->id) }}" class="btn btn-primary">更新</a></td>
                     {!! Form::open(['route' => ['todos.destroy', $todo->id], 'method' => 'POST']) !!}
                     {{ csrf_field() }}
