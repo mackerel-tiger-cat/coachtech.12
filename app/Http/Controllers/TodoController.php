@@ -8,11 +8,8 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $item = [
-            Model::insert(array('created_at'=>Carbon::now())),
-            'content' => '',
-        ];
-        return view('index', $item);
+        $items = Todo::all();
+        return view('index', ['items' => $items]);
     }
     //
     public function  create($id)
