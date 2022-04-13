@@ -9,58 +9,43 @@ class TodoController extends Controller
     public function index()
     {
         $items = Todo::all();
-        return view('index', ['items' => $items]);
+        return view('todolist', ['todos' => $items]);
+        // todolist.blade.phpの$todosに$itemを入れている 
     }
     //
     public function  create($id)
     {
-        $todo = Todo::find($id);
-
-        return view('index', ['todo' => $todo,]);
+        $todo = Todo::findOrFail($id);
+        return view('todos.create', compact('todo'));
     }
     //
     public function  update(Request $request, $id)
     {
-        $request->validate([
-            'updateTodo'     => 'required|max:20',
+        $this->validate($request, [
+            'updatedTodo' => 'required|max:20',
         ]);
-
-        $todo = Todo::find($id);
-
-        $todo->todo     = $request->updateTodo;
-
+        $todo = Todo::findOrFail($id);
+        $todo->name = $request->updatedTodo;
         $todo->save();
-        /*
         return redirect()->route('todos.index');
-        */
-        return view('update', );
     }
     //
-    public function  delete($id)
+    public function delete($id)
     {
-        /*
-        destroy($id)
-        */
-        $todo = Todo::find($id);
-        /*
+        $todo = Todo::findOrFail($id);
         $todo->delete();
-        */
-        /*
         return redirect()->route('todos.index');
-        */
-        return view('delete', );
     }
+    
     /*バリデーション*/
     public function store(Request $request)
     {
         $request->validate([
             'newTodo' => 'required|max:20',
         ]);
+        $todo = new Task;
+        $todo->name = $request->newTodo;
+        $todo->save();
+        return redirect()->route('todos.index');
     }
-    /*DBに保存--->書き方が間違っているらしく、よくわからない
-    Todo::create([
-        'todo' => $request->newTodo,
-    ]);
-    return redirect()->route('todos.index');
-    */
 }

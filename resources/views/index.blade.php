@@ -194,25 +194,23 @@
       <div class="container__1">
         <h1>Todo List</h1>
       </div>
-      
     <div class="container___1">
         <div class="container___2">
-            {!! Form::open(['route' => ['todos.update', $todo->id], 'method' => 'POST']) !!}
+            <form action="{{ route('todos.store', $todo->id) }}" method="POST">
             {{ csrf_field() }}
-            {{ method_field('PUT') }}
                 <div class="row">
-                     {{ Form::text('updateTodo', $todo->todo, ['class' => 'form-control col-7 ___2']) }}
-                    <!--現在時刻の書き方がわからない
-                    {{ Form::date('updateDeadline', $todo->deadline, ['class' => '___1']) }}
-                    -->
-                    {{ Form::submit('Todoリストを更新', ['class' => 'btn btn-primary ___2']) }}
-                    <a href="{{ route('todos.index') }}" class="btn btn-danger">戻る</a>
+                  <div class="col-md-9">
+                    <input type="text" name="newTodo" class="form-control">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="submit" class="btn btn-primary form-control" value="追加">
+                  </div>
                 </div>
-            {!! Form::close() !!}
+            </form>
         </div>
         <!-- エラー表示 ここから -->
-        @if ($errors->has('updateTodo'))
-            <p class="alert alert-danger">{{ $errors->first('updateTodo') }}</p>
+        @if ($errors->has('updatedTodo'))
+            <p class="alert alert-danger">{{ $errors->first('updatedTodo') }}</p>
         @endif
         <!-- エラー表示 ここまで -->>
         <table class="table">
@@ -220,32 +218,31 @@
                 <tr>
                     <th scope="col">作成日</th>
                     <th scope="col" style="width: 60%">タスク名</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">更新</th>
+                    <th scope="col">削除</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($todos as $todo)
                 <tr>
-                    <th scope="row" class="todo">{{ $todo->todo }}</th>
-                    <!--作成日（現在時刻）を記述する事
-                    <td>{{{ $todo->**** }}</td>-->
-                    <td><a href="{{ route('index', $todo->id) }}" class="btn btn-primary">更新</a></td>
-                    <td>{{ Form::submit('削除', ['class' => 'btn btn-danger']) }}</td>
+                    <th scope="row" class="todo">{{ $todo->id }}</th>
+                    <td>{{ $todo->name }}</td>
+                    <td>
+                      <a href="{{ route('todos.create', [todos' => $todo->id]) }}" class="btn btn-outline-secondary">更新</a>
+                    </td>
+                    <td>
+                      <form action="{{ route('todos.delete', ['todos' => $todo->id]) }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="btn btn-danger" value="削除"> 
+                      </form>
+                    </td>
                 </tr>
-        @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
-
     </div>
   </div>
-<!--
-  <h1>{{$content}}</h1>
-  <form action="/" method="POST">
-    @csrf
-    <input type="text" name="content" >
-    <input type="submit"  >
-  </form>
--->
 </body>
 </html>
