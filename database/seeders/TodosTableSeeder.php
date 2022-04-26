@@ -28,5 +28,9 @@ class TodosTableSeeder extends Seeder
         'content' => 'みかん',
     ];
     DB::table('todos')->insert($param);
+
+    $param =[
+        'content' => 'もも',
+    ];
     }
 }

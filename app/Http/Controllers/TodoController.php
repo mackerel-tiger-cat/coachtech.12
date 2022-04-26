@@ -12,12 +12,28 @@ class TodoController extends Controller
         return view('todolist', ['todos' => $items]);
         // todolist.blade.phpの$todosに$itemを入れている 
     }
+    //Eloquent 検索とモデル結合ルート
+    public function find()
+    {
+        return view('find', ['input' => '']);
+    }
+    public function search(Request $request)
+    {
+        $item = Todo::where('name', 'LIKE',"%{$request->input}%")->first();
+        $param = [
+            'input' => $request->input,
+            'item' => $item
+        ];
+        return view('find', $param);
+    }
+
     //
     public function  create($id)
     {
         $todo = Todo::findOrFail($id);
         return view('todos.create', compact('todo'));
     }
+
     //
     public function  update(Request $request, $id)
     {
@@ -29,6 +45,7 @@ class TodoController extends Controller
         $todo->save();
         return redirect()->route('todos.index');
     }
+    
     //
     public function delete($id)
     {
@@ -48,4 +65,5 @@ class TodoController extends Controller
         $todo->save();
         return redirect()->route('todos.index');
     }
+    
 }
