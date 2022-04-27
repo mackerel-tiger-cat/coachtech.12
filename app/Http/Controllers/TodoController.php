@@ -12,7 +12,8 @@ class TodoController extends Controller
         return view('todolist', ['todos' => $items]);
         // todolist.blade.phpの$todosに$itemを入れている 
     }
-    //Eloquent 検索とモデル結合ルート
+
+    //Eloquent 検索とモデル結合ルート...todolist.blade.phpが表示されるか
     public function find()
     {
         return view('find', ['input' => '']);
@@ -28,10 +29,28 @@ class TodoController extends Controller
     }
 
     //
-    public function  create($id)
+    public function  create(Request $request)
     {
-        $todo = Todo::findOrFail($id);
-        return view('todos.create', compact('todo'));
+    //{作成案①}
+        $form = $request->all();
+    //①フォームの値を取り出す
+        $item->fill($form)->save();
+    //②取り出した値を使ってデータ(Todo)を育成する
+        /*
+        return view('todolist', ['todos' => $items]);--->正しい表記方法を知りたい
+        */
+    //③結果を返す(indexの部分と同じ)
+
+    //{作成案②}
+    /*
+        $content = $request->content;
+        $item = [
+            'content' => $content
+            --->実際にアクセス出来ているか確認するためのviewのcreatechecking.blade.php
+            'content' => 'アクセス出来ています',
+        ];
+        return view('create', $item);--->結果を返すための表記方法が知りたい
+    */
     }
 
     //
@@ -43,18 +62,18 @@ class TodoController extends Controller
         $todo = Todo::findOrFail($id);
         $todo->name = $request->updatedTodo;
         $todo->save();
-        return redirect()->route('todos.index');
+        //return view('todolist', ['todos' => $items]);...indexの部分と同じ
     }
-    
+
     //
     public function delete($id)
     {
         $todo = Todo::findOrFail($id);
         $todo->delete();
-        return redirect()->route('todos.index');
+        //return view('todolist', ['todos' => $items]);...indexの部分と同じ
     }
     
-    /*バリデーション*/
+    /*バリデーション...エラーメッセージの表示*/
     public function store(Request $request)
     {
         $request->validate([
