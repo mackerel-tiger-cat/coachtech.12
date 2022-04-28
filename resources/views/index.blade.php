@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -208,11 +209,14 @@
                 </div>
             </form>
         </div>
-        <!-- エラー表示 ここから -->
+-->
+
+        <!-- エラー表示 ここから
         @if ($errors->has('updatedTodo'))
             <p class="alert alert-danger">{{ $errors->first('updatedTodo') }}</p>
         @endif
         <!-- エラー表示 ここまで -->>
+<!--
         <table class="table">
             <thead>
                 <tr>
@@ -246,3 +250,4 @@
   </div>
 </body>
 </html>
+-->

@@ -15,11 +15,14 @@ use App\Http\Controllers\TodoController;
 */
 
 Route::get('/',[TodoController::class,'index']);
-Route::post('/todo/create',[TodoController::class,'create']);
-Route::post('/todo/update',[TodoController::class,'update']);
-Route::post('/todo/delete',[TodoController::class,'delete']);
+Route::get('/todo/create',[TodoController::class,'create']);
+Route::post('/todo/create', [TodoController::class,'create'])
+//Route::post('/todo/update', [TodoController::class,'update'])
+//Route::get('/todo/delete',[TodoController::class,'delete']);
+//Route::post('/todo/delete', [TodoController::class,'delete'])
 
 //Eloquent 検索と結合
+/*
 Route::get('/find', [TodoController::class, 'find']);
 Route::post('/find', [TodoController::class, 'search']);
-
+*/

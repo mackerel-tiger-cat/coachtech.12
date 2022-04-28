@@ -32,5 +32,6 @@ class TodosTableSeeder extends Seeder
     $param =[
         'content' => 'もも',
     ];
+    DB::table('todos')->insert($param);
     }
 }
