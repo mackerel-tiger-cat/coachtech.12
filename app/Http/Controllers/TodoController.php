@@ -40,7 +40,17 @@ class TodoController extends Controller
            // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
         ];
         return view('create', $items);
-        //--->結果を返すための表記方法が知りたい
+    }
+
+    public function createpost(Request $request)
+    {
+        $content = $request->content;
+        $items = [
+            'content' => '',
+            'content' => $content
+           // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
+        ];
+        return view('createresult', $items);
     }
 
     //
