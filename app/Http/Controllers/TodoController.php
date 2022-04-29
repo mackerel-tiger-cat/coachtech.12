@@ -38,7 +38,7 @@ class TodoController extends Controller
     {
         $content = $request->content;
         $items = [
-            'content' => ''
+            'content' => '',
             'content' => $content
            // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
         ];
