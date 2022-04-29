@@ -11,7 +11,7 @@
 <!--createの入力から送信までのview-->
 <body>
   <h1>{{$content}}</h1>
-  <form action="/todo/create" method="POST">
+  <form action="/todopractice/create" method="POST">
     @csrf
     <input type="text" name="名前">
     <input type="submit">
