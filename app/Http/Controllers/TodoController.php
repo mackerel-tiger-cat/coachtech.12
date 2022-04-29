@@ -8,10 +8,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $items = Todo::all(）
-        $items = [
-            'content' => '',
-        ];
+        $items = Todo::all();
         return view('todolist', ['todos' => $items]);
         // todolist.blade.phpの$todosに$itemを入れている 
     }
