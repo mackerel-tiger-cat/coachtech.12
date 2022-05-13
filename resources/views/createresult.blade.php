@@ -11,6 +11,7 @@
 <!--createの結果を返すview-->
 <body>
   <h1>Hello</h1>
+  <!--この内容-->
 </body>
 </html>
 </body>

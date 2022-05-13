@@ -16,5 +16,6 @@
     <input type="text" name="名前">
     <input type="submit">
   </form>
+  <!--この内容-->
 </body>
 </html>
