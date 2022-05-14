@@ -45,6 +45,7 @@ class TodoController extends Controller
     public function createpost(Request $request)
     {
         $content = $request->content;
+        /*
         $items = [
             'content' => '',
             'content' => $content
@@ -52,10 +53,16 @@ class TodoController extends Controller
         ];
         $param = [
             'input' => 'りんご',
-            'input' => $request->input
+            //'input' => $request->input
 
         ];
         //return view('createresult', $items);
+        */
+        $items = Todo::find($request->input);
+        $param = [
+            //'input' => 'りんご',
+            'input' = $request->input;
+        ];
         return view('createresult', $param);
     }
     //この内容
