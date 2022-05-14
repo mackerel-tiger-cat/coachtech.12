@@ -51,7 +51,9 @@ class TodoController extends Controller
            // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
         ];
         $param = [
+            'input' => 'りんご',
             'input' => $request->input
+
         ];
         //return view('createresult', $items);
         return view('createresult', $param);
