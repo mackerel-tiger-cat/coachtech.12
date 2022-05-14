@@ -51,18 +51,21 @@ class TodoController extends Controller
             'content' => $content
            // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
         ];
+        */
         $param = [
-            'input' => 'りんご',
+            'content' => $content,
+            'input' => $request->content
+            //'りんご',
             //'input' => $request->input
 
         ];
         //return view('createresult', $items);
-        */
-        $items = Todo::find($request->input);
+        /*
         $param = [
             //'input' => 'りんご',
             'input' = $request->input;
         ];
+        */
         return view('createresult', $param);
     }
     //この内容
