@@ -10,7 +10,7 @@
 </head>
 <!--createの結果を返すview-->
 <body>
-  <h1>Hello</h1>
+  <h1>{{$content}}</h1>
   <!--この内容-->
 </body>
 </html>

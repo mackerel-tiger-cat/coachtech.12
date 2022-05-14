@@ -50,7 +50,11 @@ class TodoController extends Controller
             'content' => $content
            // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
         ];
-        return view('createresult', $items);
+        $param = [
+            'input' => $request->input
+        ];
+        //return view('createresult', $items);
+        return view('createresult', $param);
     }
     //この内容
 
