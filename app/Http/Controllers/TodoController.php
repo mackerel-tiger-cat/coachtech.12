@@ -30,9 +30,8 @@ class TodoController extends Controller
             'input' => $request->content
             //--->左側がcreateresult.blade.phpの13行目の{{$input}}と一致している
         ];
-        $content = new Todo();
-        $content->todo = $this->todo;
-        $todo->done = false;
+        $todo = new Todo();
+        $todo->todo = $this->todo;
         $todo->save();
         return view('createresult', $param);
     }
