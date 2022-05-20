@@ -12,32 +12,12 @@ class TodoController extends Controller
         return view('todolist', ['todos' => $items]);
         // todolist.blade.phpの$todosに$itemを入れている 
     }
-
-    //Eloquent 検索とモデル結合ルート...todolist.blade.phpが表示されるか
-    /*
-    public function find()
-    {
-        return view('find', ['input' => '']);
-    }
-    public function search(Request $request)
-    {
-        $item = Todo::where('name', 'LIKE',"%{$request->input}%")->first();
-        $param = [
-            'input' => $request->input,
-            'item' => $item
-        ];
-        return view('find', $param);
-    }
-    */
-
-    //
     public function  create(Request $request)
     {
         $content = $request->content;
         $items = [
             'content' => '',
             'content' => $content
-           // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
         ];
         return view('create', $items);
     }
@@ -45,30 +25,17 @@ class TodoController extends Controller
     public function createpost(Request $request)
     {
         $content = $request->content;
-        /*
-        $items = [
-            'content' => '',
-            'content' => $content
-           // --->実際にアクセス出来ているか確認するためのviewのcreate.blade.php
-        ];
-        */
         $param = [
             'content' => $content,
             'input' => $request->content
-            //'りんご',
-            //'input' => $request->input
-
+            //--->左側がcreateresult.blade.phpの13行目の{{$input}}と一致している
         ];
-        //return view('createresult', $items);
-        /*
-        $param = [
-            //'input' => 'りんご',
-            'input' = $request->input;
-        ];
-        */
+        $content = new Todo();
+        $content->todo = $this->todo;
+        $todo->done = false;
+        $todo->save();
         return view('createresult', $param);
     }
-    //この内容
 
     //
     /*
