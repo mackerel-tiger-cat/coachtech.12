@@ -32,6 +32,7 @@ class TodoController extends Controller
         ];
         $todo = new Todo();
         $todo->todo = $this->todo;
+        $todo->content;
         $todo->save();
         return view('createresult', $param);
     }
