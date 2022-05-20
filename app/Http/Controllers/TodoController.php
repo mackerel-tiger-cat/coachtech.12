@@ -31,8 +31,7 @@ class TodoController extends Controller
             //--->左側がcreateresult.blade.phpの13行目の{{$input}}と一致している
         ];
         $todo = new Todo();
-        $todo->todo = $this->todo;
-        $todo->content;
+        $todo->content = "な";
         $todo->save();
         return view('createresult', $param);
     }
