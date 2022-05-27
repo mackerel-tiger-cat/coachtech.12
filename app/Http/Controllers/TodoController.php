@@ -28,9 +28,7 @@ class TodoController extends Controller
             'content' => $content,
             'input' => $request->content
         ];
-        $todo = new Todo();
-        $todo->content = $content;
-        $todo->save();
+        $todo = Todo::create(['content'=>$request->content,]);
         return view('createresult', $param);
     }
 }
