@@ -8,10 +8,8 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
 </head>
-<!--createの結果を返すview-->
 <body>
   <h1>{{$input}}</h1>
-  <!--この内容-->
 </body>
 </html>
 </body>
