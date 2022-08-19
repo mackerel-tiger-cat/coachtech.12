@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1>To do list</h1>
-  <form action="/todo/create" method="POST">
+  <form action="/todo/update" method="POST">
     @csrf
     <input type="text" name="content">
     <input type="submit">

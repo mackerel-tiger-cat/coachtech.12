@@ -42,7 +42,7 @@ class TodoController extends Controller
         return view('update', $items);
     }
 
-    public function createupdate(Request $request)
+    public function updatepost(Request $request)
     {
         Todo::where('',1)
         ->where('', '')
