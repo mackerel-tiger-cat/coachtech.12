@@ -31,4 +31,24 @@ class TodoController extends Controller
         $todo = Todo::create(['content'=>$request->content,]);
         return view('createresult', $param);
     }
+
+    public function update(Request $request)
+    {
+        $content = $request->content;
+        $items = [
+            'content' => '',
+            'content' => $content
+        ];
+        return view('update', $items);
+    }
+
+    public function createupdate(Request $request)
+    {
+        Todo::where('',1)
+        ->where('', '')
+        ->update(['' => 1]);
+        $content->save();
+        return view('updatepost', $items);
+    }
 }
+
