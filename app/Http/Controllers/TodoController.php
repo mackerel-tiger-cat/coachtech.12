@@ -32,11 +32,12 @@ class TodoController extends Controller
         return view('createresult', $param);
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $content = $request->content;
         $items = Todo::where('id', '=', '山本先生')->get();
         $items->save();
+        return view('update', $items);
     }
 
     public function updatepost()
