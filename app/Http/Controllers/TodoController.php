@@ -35,7 +35,6 @@ class TodoController extends Controller
         $param = [
             'input' => $request->content
         ];
-        $todo = Todo::create(['content'=>$request->content,]);
         Todo::find(1)
         ->update(['content' => 1]);
         return view('updatepost', $param);
