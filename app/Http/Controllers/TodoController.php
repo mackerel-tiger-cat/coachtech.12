@@ -40,7 +40,7 @@ class TodoController extends Controller
         return view('update', $items);
     }
 
-    public function updatepost()
+    public function updatepost(Request $request)
     {
         Todo::find(1)
         ->update(['content' => 1]);
