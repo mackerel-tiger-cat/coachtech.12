@@ -18,9 +18,7 @@ class TodoController extends Controller
 
     public function createpost(Request $request)
     {
-        $content = $request->content;
         $param = [
-            'content' => $content,
             'input' => $request->content
         ];
         $todo = Todo::create(['content'=>$request->content,]);
@@ -34,9 +32,13 @@ class TodoController extends Controller
 
     public function updatepost(Request $request)
     {
+        $param = [
+            'input' => $request->content
+        ];
+        $todo = Todo::create(['content'=>$request->content,]);
         Todo::find(1)
         ->update(['content' => 1]);
-        return view('updatepost', $items);
+        return view('updatepost', $param);
     }
 }
 
