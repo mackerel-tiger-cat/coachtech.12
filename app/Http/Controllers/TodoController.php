@@ -18,10 +18,10 @@ class TodoController extends Controller
 
     public function createpost(Request $request)
     {
-        $param = [
-            'input' => $request->content
-        ];
         $todo = Todo::create(['content'=>$request->content,]);
+        $param = [
+            'input' => $todo
+        ];
         return view('createresult', $param);
     }
 
