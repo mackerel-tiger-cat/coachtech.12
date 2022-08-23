@@ -13,7 +13,7 @@ class TodoController extends Controller
     }
     public function  create()
     {
-        return view('create', $items);
+        return view('create');
     }
 
     public function createpost(Request $request)
@@ -29,7 +29,7 @@ class TodoController extends Controller
 
     public function update()
     {
-        return view('update', $items);
+        return view('update');
     }
 
     public function updatepost(Request $request)
