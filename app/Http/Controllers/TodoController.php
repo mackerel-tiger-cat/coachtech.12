@@ -36,7 +36,7 @@ class TodoController extends Controller
             'input' => $request->content
         ];
         Todo::find(1)
-        ->update(['content' => 1]);
+            ->update(['content' => 1]);
         return view('updatepost', $param);
     }
 }
