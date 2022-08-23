@@ -32,11 +32,12 @@ class TodoController extends Controller
 
     public function updatepost(Request $request)
     {
-        $param = [
-            'input' => $request->content
-        ];
         Todo::find(1)
             ->update(['content' => 1]);
+        $todo = Todo::find(1);
+        $param = [
+            'input' => $todo
+        ];
         return view('updatepost', $param);
     }
 }
