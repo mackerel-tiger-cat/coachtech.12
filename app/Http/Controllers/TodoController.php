@@ -11,13 +11,8 @@ class TodoController extends Controller
         $items = Todo::all();
         return view('todolist', ['todos' => $items]);
     }
-    public function  create(Request $request)
+    public function  create()
     {
-        $content = $request->content;
-        $items = [
-            'content' => '',
-            'content' => $content
-        ];
         return view('create', $items);
     }
 
@@ -32,11 +27,8 @@ class TodoController extends Controller
         return view('createresult', $param);
     }
 
-    public function update(Request $request)
+    public function update()
     {
-        $content = $request->content;
-        $items = Todo::where('id', '=', '山本先生')->get();
-        $items->save();
         return view('update', $items);
     }
 
